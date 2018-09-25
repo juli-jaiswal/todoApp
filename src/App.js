@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
+import { add } from "./actions/actionindex";
 
 class App extends Component {
-  add = () => {
+  add1 = () => {
     this.props.add(this.refs.myinput.value);
   };
 
@@ -12,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <input type="text" placeholder="Enter text" ref="myinput" />
-        <button onClick={this.add}>add</button>
+        <button onClick={this.add1}>add</button>
         <div>
           <ul>{list}</ul>
         </div>
@@ -26,7 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispachToProps = dispach => ({
-  add: value => dispach({ type: "ADD", value })
+  add: value => dispach(add(value))
 });
 
 export default connect(
